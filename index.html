@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+  <style>
+    #page{
+      background-color: brown;
+    }
+    .card{
+      display:inline-block;
+      margin-top: 120px;
+    }
+    img{
+      width: 188px;
+      height: 350px;
+    }
+    .cart{
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      float: right;
+      margin-right: 10px ;
+    }
+    .btn{
+      background-color: rgb(0, 255, 98);
+      width: 70px;
+      height: 50px;
+      border-radius: 10%;
+      margin-left: 35%;
+    }
+    .logo{
+      width: 150px;
+      height: 100px;
+      border-radius: 10%;
+      float: left;
+    }
+    .total{
+      width: 300px;
+      float: right;
+      background-color: burlywood;
+      margin-top: 110px;
+      margin-right: -100px;
+      text-align: center;
+      display: none;
+      border-radius: 20px;
+    }
+    .ultra_total{
+      width: 100%;
+      height: 200px;
+      background-color: rgb(243, 171, 76);
+    }
+    .right{
+      width: 50%;
+      height: 100%;
+      float: right;
+
+    }
+    .right img{
+      width: 95%;
+      height: 95%;
+      margin-top: 10px;
+    }
+    .left{
+      width: 50%;
+      height: 100%;
+      float: left;
+
+    }
+    .dle{
+      border-radius: 15px;
+      background-color: rgb(198, 0, 0);
+    }
+
+  </style>
+</head>
+<body>
+<div id="page">
+  <img class="logo" src="imges/logo.png" alt="">
+ <img class="cart"  src="imges/cart.jpg">
+        <div class="total" >
+          <hr>
+          <h2>total: <span id="total">0</span>$</h2>
+
+        </div>
+        <div class="card  ultra" style="width: 18rem;">
+          <img src="imges/ultra x8(1).jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ultra X8</h5>
+            <p class="card-price"><span>999</span>$</p>
+            <button class="btn">Buy</button>          </div>
+        </div>
+        <div class="card  casio" style="width: 18rem;">
+          <img src="imges/casio.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Casio</h5>
+            <p class="card-price"><span>550</span>$</p>
+            <button class="btn">Buy</button>          </div>
+        </div>
+        <div class="card  airpods" style="width: 18rem;">
+          <img src="imges/airpods.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">airpods pro 2</h5>
+            <p class="card-price"><span>600</span>$</p>
+            <button class="btn">Buy</button>          </div>
+        </div>
+
+  
+</div>
+  
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+//       // let sty =$(".total").html
+
+//       $(".cart").click(function(){
+//         // $(".cart").css("display" , "inline")
+//         document.write(`        <div class="card" style="width: 18rem;">
+//           <img src="imges/casio.jpg" class="card-img-top" alt="...">
+//           <div class="card-body">
+//             <h5 class="card-title">Casio</h5>
+//             <p class="card-text">550$</p>
+//             <button class="btn">Buy</button>          </div>
+//         </div>
+// `)
+//       })
+//       $(".btn").click(function(){
+
+//       })
+         $(".cart").click(function(){
+          $(".total").slideToggle(1000)
+         })
+
+         $(".ultra Button").click(function(){
+             var ultra_price = Number($(".ultra span").text());
+             var total = Number($(".total #total").text());
+             var ultra_count = Number($(".ultra_count").text());
+
+             if(!ultra_count){
+              $(".total").prepend(`
+              <div class="ultra_total">
+                <div class="right">
+                    <img src="imges/ultra x8(1).jpg">
+                </div>
+                <div class="left">
+                  <h2>Ultra X8</h2>
+                  <h3>price : <span>999</span>$</h3>
+                  <p>Count : <span class="ultra_count">1</span></p>
+                  <button class="dle">DLE</button>
+                 </div>
+              
+              </div>
+             `)
+             $(".total #total").text(ultra_price+total);
+
+             }else{
+              $(".ultra_count").text(ultra_count + 1);
+              $(".total #total").text(ultra_price +total);
+             }
+
+            $(".total").on("click" , ".ultra_total .dle" , function(){
+              var ultra1_count = Number($(".ultra_count").text());
+              $(".ultra_count").text( ultra1_count - 1)
+            })
+
+        })
+
+
+        
+    </script>
+  </body>
+</html>
